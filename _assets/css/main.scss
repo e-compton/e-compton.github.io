@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto|Roboto+Slab');
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+$dark-color: #222;
+$light-color: #fff;
+
+$primary-color: #ad443e;
+$secondary-color: #993955;
+$muted-color: #828a95;
+
+@import 'skeleton';
+
+.canvas {
+  background-color: #222;
+}
+
+.canvas_wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+.hero {
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero_title {
+  font-family: 'Pacifico', cursive;
+  position: relative;
+}
+
+.hero_icons {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: relative(24px);
+  a, a:hover, a:visited {
+    color: $light-color;
+  }
+}
+.center {
+  text-align: center;
+}
+
+#gravity_section {
+  background: url(gravity.gif);
+  background-size: cover;
+  width: 100vw;
+  position: relative;
+}

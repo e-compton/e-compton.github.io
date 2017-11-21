@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Edward Compton</title>
+    {% stylesheet main %}
+</head>
+
+<body>
+
+<body>
+<div class="canvas_wrapper">
+    <canvas class="canvas" height="900px" width="1920px"></canvas>
+</div>
+<div class="container">
+    <div class="hero">
+        <h1 class="hero_title">Edward Compton</h1>
+        <p>Hello, I'm a developer</p>
+        <p>
+            <a href="files/cv-edward_compton.pdf" target="_blank" class="button button-primary">cv</a>
+        </p>
+
+        <div class="hero_icons">
+            <a href="https://github.com/e-compton/" target="_blank"><i class="fa fa-github"></i></a> &nbsp;
+            <a href="https://www.linkedin.com/in/edward-compton-a92370109/" target="_blank"><i
+                    class="fa fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Gravity</h3>
+    </div>
+
+    <div class="row">
+        <div class="nine columns">
+            <p>A gravity simulation sandbox written in java using LibGDX.</p>
+            <ul>
+                <li>Velocity Verlet numerical method implementation</li>
+                <li>Live editing of velocity, masses and radii</li>
+            </ul>
+        </div>
+
+        <div class="three columns center">
+            <a href="files/gravityLab.exe" download class="button">download</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Trampedia</h3>
+    </div>
+    <div class="row">
+        <div class="nine columns">
+            <p>An encyclopedia of trampoline moves for coaches and judges of trampoline gymnastics</p>
+        </div>
+        <div class="three columns center">
+            <a href="http://trampedia.siteleaf.net/" target="_blank" class="button">visit</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Trampoline.club</h3>
+    </div>
+
+    <div class="row">
+        <div class="nine columns">
+            <p>The University of Warwick Trampoline club website.</p>
+        </div>
+        <div class="three columns center">
+            <a href="http://warwicktrampoline.club/" target="_blank" class="button">visit</a>
+        </div>
+    </div>
+
+    <div class="row center">
+        <br>
+        <p>&copy; Edward Compton {{ "now" | date: "%Y" }}</p>
+    </div>
+
+    <script>
+      var c = document.querySelector('.canvas');
+      var ctx = c.getContext('2d');
+      ctx.fillStyle = 'white';
+      for (var i = 0; i < 80; i++) {
+        let x = random(0, 1920);
+        let y = smallWeightedRandom(0, 900);
+        let fontSize = random(5, 15);
+        ctx.font = `${fontSize}px monospace`;
+        ctx.fillText(".", x, y);
+      }
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+
+      function smallWeightedRandom(min, max) {
+        return Math.floor(Math.abs(Math.random() - Math.random()) * (max - min) + min);
+      }
+    </script>
+</body>
+
+</html>
