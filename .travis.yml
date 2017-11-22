@@ -3,7 +3,10 @@ rvm:
 - 2.3.3
 
 install: gem install jekyll html-proofer
-script: jekyll build && htmlproofer./_site
+script:
+- bundle
+- bundler exec jekyll build
+- htmlproofer./_site
 
 branches:
   only:
