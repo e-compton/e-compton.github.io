@@ -2,11 +2,9 @@ language: ruby
 rvm:
 - 2.3.3
 
-install: gem install jekyll html-proofer bundler
 script:
-- bundle
-- bundler exec jekyll build
-- htmlproofer ./_site
+- bundle exec jekyll build
+- bundle exec htmlproofer ./_site
 
 branches:
   only:
