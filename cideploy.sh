@@ -17,6 +17,7 @@ mkdir _site
 git clone https://${GH_TOKEN}@github.com/e-compton/edwardcomptonnet.git --branch gh-pages _site
 
 # build with Jekyll into "_site"
+npm install
 bundle exec jekyll build
 
 # push
