@@ -2,9 +2,19 @@ language: ruby
 rvm:
 - 2.3.3
 
-script:
-- bundle exec jekyll build
-- bundle exec htmlproofer ./_site --http-status-ignore "999"
+
+
+jobs:
+  include:
+    - stage: build
+      script: bundle exec jekyll build
+    - stage: test
+      script: bundle exec htmlproofer ./_site --http-status-ignore "999"
+    - stage: deploy
+      script:
+      - chmod +x ./cideploy.sh
+      - ./cideploy.sh
+
 
 branches:
   only:
