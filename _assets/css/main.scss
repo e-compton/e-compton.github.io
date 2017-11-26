@@ -12,6 +12,13 @@ $muted-color: #828a95;
 
 @import 'skeleton';
 
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 350px;
+}
+
 .canvas {
   background-color: #222;
 }
@@ -34,12 +41,33 @@ $muted-color: #828a95;
   position: relative;
 }
 
-.hero_icons {
-  position: absolute;
-  top: 10px;
-  right: 15px;
+nav {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  font-size: relative(20px);
+}
+
+.nav_title {
+  font-family: 'Pacifico', cursive;
+  position: relative;
+  display: block;
+  color: $light-color;
+    text-decoration: none;
+  &:hover, &:visited {
+    text-decoration: none;
+    color: $light-color;
+  }
+}
+
+.nav_icons {
+  // position: absolute;
+  // top: 10px;
+  // right: 15px;
+  margin-left: auto;
   font-size: relative(24px);
   a, a:hover, a:visited {
+    text-decoration: none;
     color: $light-color;
   }
 }
@@ -99,3 +127,6 @@ svg {
 .applet_icons>div {
   flex: 1 0;
 }
+
+
+@import 'syntax';

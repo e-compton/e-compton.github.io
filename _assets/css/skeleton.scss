@@ -5,3 +5,14 @@
 body {
   background-color: $dark-color;
 }
+
+code {
+  background-color: $dark-color;
+  border-color: $muted-color;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+  .container {
+    padding: 0 25px;
+  }
+}

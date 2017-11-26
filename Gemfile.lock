@@ -108,6 +108,7 @@ DEPENDENCIES
   jekyll (= 3.5.2)
   jekyll-assets
   minima (~> 2.0)
+  rouge
   tzinfo-data
 
 BUNDLED WITH
