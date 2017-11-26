@@ -14,7 +14,7 @@ rm -rf _site
 mkdir _site
 
 # clone remote repo to "_site"
-git clone https://${GH_TOKEN}@github.com/e-compton/edwardcomptonnet.git --branch master _site
+git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --branch master _site
 
 # build with Jekyll into "_site"
 npm install
