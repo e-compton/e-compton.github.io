@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "skeleton-sass-official": "https://s3.eu-west-2.amazonaws.com/edward-compton-node-modules/skeleton-sass-official-3.1.4.tgz"
-  },
-  "scripts": {
-    "serve": "bundler exec jekyll serve"
-  }
-}
