@@ -47,11 +47,20 @@ $muted-color: #828a95;
   text-align: center;
 }
 
+.section {
+  margin-bottom: 100px;
+}
+
 #gravity_section {
   background: url(gravity.gif);
   background-size: cover;
   width: 100vw;
   position: relative;
+}
+
+svg {
+  width: 50%;
+  clear: both;
 }
 
 .svg_icon>svg {
@@ -78,4 +87,15 @@ $muted-color: #828a95;
 }
 .parallax__layer--back {
   transform: translateZ(-1px) scale(2);
+}
+
+.applet_icons {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+}
+
+.applet_icons>div {
+  flex: 1 0;
 }
