@@ -14,7 +14,7 @@ rm -rf _site
 mkdir _site
 
 # clone remote repo to "_site"
-git clone https://${GH_TOKEN}@github.com/e-compton/edwardcomptonnet.git --branch gh-pages _site
+git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --branch master _site
 
 # build with Jekyll into "_site"
 npm install
@@ -26,4 +26,4 @@ git config user.email "edward.compton@btinernet.com"
 git config user.name "Edward Compton"
 git add --all
 git commit -a -m "Travis Deploy #$TRAVIS_BUILD_NUMBER"
-git push --force origin gh-pages
+git push --force origin master
