@@ -22,8 +22,14 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 exclude:
-- node_modules
-- vendor
+- "node_modules"
+- "vendor"
+- ".gitignore"
+- "Gemfile"
+- "README.md"
+- "cideploy.sh"
+- "package.json"
+- "*.lock"
 
 # Build settings
 markdown: kramdown
