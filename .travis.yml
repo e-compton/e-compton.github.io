@@ -6,6 +6,7 @@ jobs:
   include:
     - stage: build
       script:
+      - npm install
       - bundle
       - bundle exec jekyll build
     - stage: test
