@@ -3333,17 +3333,24 @@ nav {
   position: relative;
   display: block;
   color: #fff;
-  text-decoration: none; }
+  text-decoration: none;
+  margin-right: 20px; }
   .nav_title:hover, .nav_title:visited {
     text-decoration: none;
     color: #fff; }
 
+.nav_link, .nav_link:visited {
+  text-decoration: none;
+  font-style: italic;
+  color: #fff;
+  font-size: 1.6rem; }
+  .nav_link:hover, .nav_link:active, .nav_link:visited:hover, .nav_link:visited:active {
+    color: #828a95; }
+
 .nav_icons {
-  margin-left: auto;
-  font-size: 2.4rem; }
-  .nav_icons a, .nav_icons a:hover, .nav_icons a:visited {
-    text-decoration: none;
-    color: #fff; }
+  margin-left: auto; }
+  .nav_icons .nav_link {
+    font-size: 2.2rem; }
 
 .center {
   text-align: center; }
