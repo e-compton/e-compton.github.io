@@ -6,7 +6,8 @@ class Canvas {
   }
 
   render() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = '#1e1e1e';
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.fillStyle = 'white';
     this.stars.forEach(star => {
       this.ctx.beginPath();
@@ -34,10 +35,10 @@ var c = document.querySelector('.canvas');
 let canvas = new Canvas(c);
 canvas.render();
 
-setInterval(() => {
-  canvas.act();
-  canvas.render();
-}, 16);
+// setInterval(() => {
+//   canvas.act();
+//   canvas.render();
+// }, 16);
 
 function genStars(count) {
   let stars = []
