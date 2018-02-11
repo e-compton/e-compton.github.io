@@ -3,7 +3,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-$dark-color: #222;
+$dark-color: #1e1e1e;
 $light-color: #fff;
 
 $primary-color: #ad443e;
@@ -19,12 +19,11 @@ img {
   max-height: 350px;
 }
 
-.canvas {
-  background-color: #222;
-}
 
 .canvas_wrapper {
   position: absolute;
+  overflow: hidden;
+  width: 100%;
 }
 
 .hero {
