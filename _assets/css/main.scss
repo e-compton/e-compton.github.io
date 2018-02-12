@@ -5,6 +5,7 @@
 
 $dark-color: #1e1e1e;
 $light-color: #fff;
+$offwhite-color: #D1D4D8;
 
 $primary-color: #ad443e;
 $secondary-color: #993955;
@@ -15,10 +16,9 @@ $muted-color: #828a95;
 img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  width: auto;
   max-height: 350px;
 }
-
 
 .canvas_wrapper {
   position: absolute;
@@ -45,6 +45,7 @@ nav {
   height: 60px;
   align-items: center;
   font-size: relative(20px);
+  padding-bottom: 30px;
 }
 
 .nav_title {
@@ -95,6 +96,11 @@ nav {
   position: relative;
 }
 
+a>svg {
+  height: relative(22px);
+  width: auto;
+}
+
 svg {
   width: 50%;
   clear: both;
@@ -135,6 +141,29 @@ svg {
 
 .applet_icons>div {
   flex: 1 0;
+}
+
+h2, h3, h4, h5, h6 {
+  a, a:active, a:hover, a:visited {
+    color: inherit;
+    text-decoration: inherit;
+  }
+}
+
+.blogPost {
+  padding-bottom: 4rem;
+}
+
+.blogPost_title {
+  margin-bottom: 0;
+  display: inline-block;
+}
+.blogPost_excerpt {
+  margin-bottom: 0;
+}
+.blogPost_meta {
+  margin-bottom: 1rem;
+  color: $offwhite-color;
 }
 
 
