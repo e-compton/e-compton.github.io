@@ -16,7 +16,7 @@
     <div class="blogPost">
       <h4 class="blogPost_title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
       <p class="blogPost_meta">{{ post.date | date: "%B %e, %Y" }} &middot; {{ post.category }}</p>
-      <p class="blogPost_excerpt">{{ post.excerpt | strip_html }}</p>
+      <p class="blogPost_excerpt">{{ post.excerpt | strip_html | truncate: 144 }}</p>
     </div>
     {% endfor %}
 

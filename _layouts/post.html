@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Edward Compton</title>
+  <link rel="shortcut icon" href="{% asset_path favicon %}">
+  {% stylesheet main %}
+</head>
+
+<body>
+  <div class="container">
+
+    {% include nav.html %}
+
+    <h2>{{ page.title }}</h2>
+
+    {{ content }}
+  </div>
+</body>
