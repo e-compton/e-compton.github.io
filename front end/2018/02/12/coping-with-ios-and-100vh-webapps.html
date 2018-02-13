@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Edward Compton</title>
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link type="text/css" rel="stylesheet" href="/assets/main.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <nav>
+
+  
+    <a href="https://edwardcompton.net" class="nav_title">Edward Compton</a>
+  
+
+  <a href="/blog" class="nav_link">blog</a>
+
+  <div class="nav_icons">
+    <a class="nav_link" href="https://github.com/e-compton/" target="_blank">
+      <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z" fill="#fff"/></svg>
+
+    </a>
+    &nbsp;
+    <a class="nav_link" href="https://www.linkedin.com/in/edward-compton-a92370109/" target="_blank">
+      <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M365 1414h231v-694h-231v694zm246-908q-1-52-36-86t-93-34-94.5 34-36.5 86q0 51 35.5 85.5t92.5 34.5h1q59 0 95-34.5t36-85.5zm585 908h231v-398q0-154-73-233t-193-79q-136 0-209 117h2v-101h-231q3 66 0 694h231v-388q0-38 7-56 15-35 45-59.5t74-24.5q116 0 116 157v371zm468-998v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" fill="#fff"/></svg>
+
+    </a>
+  </div>
+</nav>
+
+
+    <h2>Coping with iOS in 100vh webapps</h2>
+
+    <p>Working in a mobile browser there are several things that can cover the viewport, namely the url bar and the virtual keyboard. Unfortunately, Android and iOS have decided to implement how they effect the size of the viewport differently. In Android world the view-port is what the user can currently see. So as the keyboard rises from the base of the screen it pushes up the bottom of the viewport, resizing it, reducing the value of <code class="highlighter-rouge">vh</code>. However, in iOS land the viewport does not resize, the viewport is the screen size. When the keyboard rises it merely covers the viewport, no change in <code class="highlighter-rouge">vh</code>.</p>
+
+<p>Now some might argue that the viewport is what is currently in view, but those people don’t make these kinds of decisions at apple. So, I’ve been working on a messaging webapp recently and I came across this problem how do I make my footer stick to the bottom of the screen when keyboard pops up:</p>
+
+<p>[gif of samsung vs iphone on resizing]</p>
+
+<p>Lets rip some bandaids off:</p>
+
+<ol>
+  <li>There is no unit or api in css or javascript that tells you the height of what is currently in view.</li>
+  <li>There is no event that is fired when the keyboard appears.</li>
+  <li>There is no event that is fired when the keyboard disappears.</li>
+</ol>
+
+<p>Ok… not so good a situation. We’re going to have to this… manually.</p>
+
+<p>But there is hope! The keyboard is in view when a text input field is in focus (even better there’s only one of those in my example). So to solve problems 2 and 3 we just need to look at when my text input gains and loses focus:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="s1">'#txtInput'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'focus'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">shrinkScreen</span><span class="p">()</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#txtInput'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'unfocus'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">growScreen</span><span class="p">()</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<p>Buuuut, if the page loads focused the keyboard won’t appear until the user clicks on it. Ok, we’ll listen for clicks and add some sanity checks.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">shrunk</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#txtInput'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click focus'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shrunk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">shrunk</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">shrinkScreen</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#txtInput'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'unfocus'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">shrunk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">shrunk</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">growScreen</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>How tall is the iOS keyboard? Oh its not a consistent size across devices? Or orientation? And can even change if the user enables quick type? That’s a lot of heights, a lot of heights I don’t want to google. A lot of heights I don’t want to write in my code and a lot of heights that I don’t want to try guess which one to use. So lets go back to iOS viewport land…</p>
+
+<p>What is Apple actually doing when I open the keyboard? With a little bit of detective work we can see that they are actually scrolling the <code class="highlighter-rouge">&lt;body&gt;</code> up in the <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code>… sneaky… But that means we can work out the height of the keyboard! It scrolls the body up exactly the height of the keyboard!!</p>
+
+<p>[animation of heights being printed out]</p>
+
+<p>…But it doesn’t do it instantly. Nor (my god) does it even do it in a consistent amount of time across devices…. Nevertheless! We shall persist!</p>
+
+<p>[code block of recursive shrinkage]</p>
+
+<p>When called this function will check every 10ms for 1s to see if iOS has scrolled, and if it has, it will shrink the height of the main outer div <code class="highlighter-rouge">.page</code>. And there you have it!</p>
+
+<h4 id="important-notes">important notes</h4>
+<ul>
+  <li>This does not work in the iPhone X… for reasons that I have not investigated</li>
+  <li>You’ll have to do this in all iOS browsers not just Safari because Chrome in iOS treats the keyboard just the same.</li>
+</ul>
+
+  </div>
+</body>
